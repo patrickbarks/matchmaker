@@ -1,0 +1,28 @@
+values,variable
+Yes,readmission
+No,readmission
+Unknown,readmission
+Missing,readmission
+Yes,treated
+No,treated
+Missing,treated
+Facility  1,facility
+Facility  2,facility
+Facility  3,facility
+Facility  4,facility
+Facility  5,facility
+Facility  6,facility
+Facility  7,facility
+Facility  8,facility
+Facility  9,facility
+Facility 10,facility
+Unknown,facility
+0-9,age_group
+10-19,age_group
+20-29,age_group
+30-39,age_group
+40-49,age_group
+50+,age_group
+High,.regex ^lab_result_
+Normal,.regex ^lab_result_
+Inconclusive,.regex ^lab_result_
