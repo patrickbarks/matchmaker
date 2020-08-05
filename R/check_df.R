@@ -23,6 +23,10 @@
 #'   `dictionary` that represents variables (or sets of variables matched with
 #'   a .regex keyword) in `x`. Defaults to `2` (second column).
 #'
+#' @param always_allow_na logical indicating whether missing values (`<NA>`)
+#'   should always be treated as allowed, even if not explicitly included in the
+#'   dictionary. Defaults to FALSE.
+#'
 #' @param return_allowed logical indicating whether the returned data frame
 #'   should include a third column summarizing the allowed values corresponding
 #'   to each non-allowed value/variable. The elements of this column are created
@@ -90,6 +94,7 @@ check_df <- function(x = data.frame(),
                      dictionary,
                      col_vals = 1,
                      col_vars = 2,
+                     always_allow_na = FALSE,
                      return_allowed = FALSE,
                      sep_allowed = "; ",
                      nchar_allowed = 60) {
@@ -177,6 +182,8 @@ check_df <- function(x = data.frame(),
 
     values_x <- sort(unique(x[[i_x]]), na.last = TRUE)
     values_w <- unique(dictionary[[i_w]][[col_vals]])
+
+    if (always_allow_na) values_w <- c(values_w, NA)
 
     non_allowed <- setdiff(values_x, values_w)
 
